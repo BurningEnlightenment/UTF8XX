@@ -79,10 +79,10 @@ BOOST_FIXTURE_TEST_CASE( next, next_fixture )
     }
 }
 
-BOOST_AUTO_TEST_CASE_EXPECTED_FAILURES( prior, 1 )
-struct prior_fixture : fixtures::valid_u8_with_it, fixtures::valid_u32 {};
+BOOST_AUTO_TEST_CASE_EXPECTED_FAILURES( previous, 1 )
+struct previous_fixture : fixtures::valid_u8_with_it, fixtures::valid_u32 {};
 
-BOOST_FIXTURE_TEST_CASE( prior, prior_fixture )
+BOOST_FIXTURE_TEST_CASE( previous, previous_fixture )
 {
     it_u8 = enc_u8_end;
 
@@ -91,18 +91,18 @@ BOOST_FIXTURE_TEST_CASE( prior, prior_fixture )
         std::string::const_iterator last = it_u8;
         BOOST_TEST_CHECKPOINT( "utf8ut_checked::prior cp=U+" << std::hex << (uint32_t)dec[i - 1] );
         char32_t cp;
-        BOOST_REQUIRE_NO_THROW( cp = utf8::prior( it_u8, enc_u8_beg ) );
+        BOOST_REQUIRE_NO_THROW( cp = utf8::previous( it_u8, enc_u8_beg ) );
         BOOST_REQUIRE_EQUAL( cp, dec[i - 1] );
         BOOST_REQUIRE( it_u8 == last - enc_u8_cp_size[i - 1] );
     }
 
     BOOST_CHECK( it_u8 == enc_u8_beg );
-    BOOST_CHECK_THROW( utf8::prior( it_u8, enc_u8_beg ), utf8::not_enough_room );
+    BOOST_CHECK_THROW( utf8::previous( it_u8, enc_u8_beg ), utf8::not_enough_room );
     BOOST_CHECK( it_u8 == enc_u8_beg );
 
     //TODO: provide stronger exception guarantee
     it_u8 = enc_u8_beg + 2;
-    BOOST_CHECK_THROW( utf8::prior( it_u8, enc_u8_beg + 1 ), utf8::invalid_utf8 );
+    BOOST_CHECK_THROW( utf8::previous( it_u8, enc_u8_beg + 1 ), utf8::invalid_utf8 );
     BOOST_CHECK( it_u8 == enc_u8_beg + 2 );
 }
 

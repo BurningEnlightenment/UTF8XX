@@ -70,9 +70,9 @@ BOOST_FIXTURE_TEST_CASE( next, next_fixture )
     }
 }
 
-struct prior_fixture : fixtures::valid_u8_with_it, fixtures::valid_u32 {};
+struct previous_fixture : fixtures::valid_u8_with_it, fixtures::valid_u32 {};
 
-BOOST_FIXTURE_TEST_CASE( prior, prior_fixture )
+BOOST_FIXTURE_TEST_CASE( previous, previous_fixture )
 {
     it_u8 = enc_u8_end;
 
@@ -81,7 +81,7 @@ BOOST_FIXTURE_TEST_CASE( prior, prior_fixture )
         std::string::const_iterator last = it_u8;
         BOOST_TEST_CHECKPOINT( "i=" << i << " cp=U+" << std::hex << (uint32_t)dec[i - 1] );
 
-        char32_t cp = lib::prior( it_u8 );
+        char32_t cp = lib::previous( it_u8 );
         BOOST_REQUIRE_EQUAL( cp, dec[i - 1] );
         BOOST_REQUIRE( it_u8 == last - enc_u8_cp_size[i - 1] );
     }
