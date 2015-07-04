@@ -1,7 +1,7 @@
-# **UTF8-CPP** #
+# UTF8++ #
 This repository is a fork of [utf8cpp](https://sourceforge.net/projects/utfcpp).
 
-### **WARNING** ###
+### WARNING ###
 This fork is *not* entirely source compatible to its parent library!
 All deprecated APIs were removed and the `prior()` functions were renamed to
 `previous()`.

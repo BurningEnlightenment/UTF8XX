@@ -10,7 +10,7 @@
 
 #include <utf8.h>
 
-BOOST_AUTO_TEST_SUITE( utf8cpp_negative )
+BOOST_AUTO_TEST_SUITE( utf8_negative )
 
 struct valid_utf8_decoding_fixture : boost::noncopyable
 {

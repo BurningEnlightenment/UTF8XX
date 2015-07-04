@@ -23,7 +23,7 @@
 # DEALINGS IN THE SOFTWARE.
 #############################################################################
 cmake_minimum_required(VERSION 3.0)
-project(utf8cpp)
+project(UTF8++)
 
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 	message(FATAL_ERROR "in-source builds are not supported!")
@@ -69,23 +69,23 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 #############################################################################
-# utf8cpp interface project
-add_library(utf8cpp INTERFACE)
+# UTF8++ interface project
+add_library(UTF8++ INTERFACE)
 
-target_include_directories(utf8cpp INTERFACE "${PROJECT_SOURCE_DIR}/source")
+target_include_directories(UTF8++ INTERFACE "${PROJECT_SOURCE_DIR}/source")
 
 #############################################################################
 # samples
-option(UTFCPP_BUILD_SAMPLES "add the sample projects to the build process")
-if (UTFCPP_BUILD_SAMPLES)
+option(UTF8++_BUILD_SAMPLES "add the sample projects to the build process")
+if (UTF8++_BUILD_SAMPLES)
     add_executable(doc_sample EXCLUDE_FROM_ALL
         "${PROJECT_SOURCE_DIR}/samples/docsample.cpp"
     )
-    target_link_libraries(doc_sample utf8cpp)
+    target_link_libraries(doc_sample UTF8++)
 endif()
 
 #############################################################################
-add_executable(utf8cpp_unit_tests
+add_executable(UTF8++_unit_tests
     "${PROJECT_SOURCE_DIR}/source/utf8.h"
     "${PROJECT_SOURCE_DIR}/source/utf8/core.h"
     "${PROJECT_SOURCE_DIR}/source/utf8/checked.h"
@@ -100,13 +100,13 @@ add_executable(utf8cpp_unit_tests
 )
 
 source_group(unit-tests REGULAR_EXPRESSION ".*/unit_tests/.*")
-source_group(utf8cpp REGULAR_EXPRESSION ".*/utf8.*")
+source_group(UTF8++ REGULAR_EXPRESSION ".*/utf8.*")
 
-target_include_directories(utf8cpp_unit_tests
+target_include_directories(UTF8++_unit_tests
 	PRIVATE ${Boost_INCLUDE_DIR}
 )
 
-target_link_libraries(utf8cpp_unit_tests
+target_link_libraries(UTF8++_unit_tests
 	${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
-	utf8cpp
+	UTF8++
 )

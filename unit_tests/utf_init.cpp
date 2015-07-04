@@ -9,6 +9,6 @@ using namespace boost::unit_test;
 
 bool init_unit_test( )
 {
-    framework::master_test_suite( ).p_name.value = "utf8cpp test suite";
+    framework::master_test_suite( ).p_name.value = "UTF8++ test suite";
     return true;
 }
