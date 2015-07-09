@@ -1,5 +1,7 @@
 # UTF8++ #
-This repository is a fork of [utf8cpp](https://sourceforge.net/projects/utfcpp).
+**Version 1.0.0**
+
+This project is a fork of [utf8cpp](https://sourceforge.net/projects/utfcpp).
 
 ### WARNING ###
 This fork is *not* entirely source compatible to its parent library!
