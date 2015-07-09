@@ -23,7 +23,7 @@
 # DEALINGS IN THE SOFTWARE.
 #############################################################################
 cmake_minimum_required(VERSION 3.0)
-project(UTF8++)
+project(UTF8++ 1.0.0)
 
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 	message(FATAL_ERROR "in-source builds are not supported!")
