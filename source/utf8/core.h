@@ -96,24 +96,14 @@ namespace detail
 // Unicode constants
 // Leading (high) surrogates: 0xd800 - 0xdbff
 // Trailing (low) surrogates: 0xdc00 - 0xdfff
-enum : uint16_t
-{
-    LEAD_SURROGATE_MIN = 0xD800u,
-    LEAD_SURROGATE_MAX = 0xDBFFu,
-    TRAIL_SURROGATE_MIN = 0xDC00u,
-    TRAIL_SURROGATE_MAX = 0xDFFFu,
-    LEAD_OFFSET = LEAD_SURROGATE_MIN - (0x10000 >> 10),
-};
-enum : uint32_t
-{
-    SURROGATE_OFFSET = 0x10000u - (LEAD_SURROGATE_MIN << 10) - TRAIL_SURROGATE_MIN,
-
-    CODE_POINT_MAX = 0x10FFFFu,
-};
-enum : char32_t
-{
-    ERROR_CHAR = 0xFFFFFFFFu,
-};
+const uint16_t LEAD_SURROGATE_MIN = 0xD800u;
+const uint16_t LEAD_SURROGATE_MAX = 0xDBFFu;
+const uint16_t TRAIL_SURROGATE_MIN = 0xDC00u;
+const uint16_t TRAIL_SURROGATE_MAX = 0xDFFFu;
+const uint16_t LEAD_OFFSET = LEAD_SURROGATE_MIN - (0x10000 >> 10);
+const uint32_t SURROGATE_OFFSET = 0x10000u - (LEAD_SURROGATE_MIN << 10) - TRAIL_SURROGATE_MIN
+const uint32_t CODE_POINT_MAX = 0x10FFFFu
+const char32_t ERROR_CHAR = 0xFFFFFFFFu;
 
 template< typename result_type, uintmax_t bit_mask, typename input_type >
 constexpr result_type masked_cast( input_type input ) noexcept
